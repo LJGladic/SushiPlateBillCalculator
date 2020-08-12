@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Sushi Plate Bill Calculator</string>
+    <string name="total_bill">Total Bill: </string>
+    <string name="start_bill">0.00</string>
+    <string name="start_plate_number">0</string>
+    <string name="plus_button">+</string>
+    <string name="minus_button">-</string>
+    <string name="yellow_price">2.50</string>
+    <string name="red_price">3.50</string>
+    <string name="green_price">4.50</string>
+    <string name="blue_price">5.50</string>
+    <string name="violet_price">6.50</string>
+    <string name="multiply">x</string>
+    <string name="num_plates_start">0</string>
+    <string name="equals">=</string>
+    <string-array name="color_spinner">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Indigo</item>
+        <item>Violet</item>
+    </string-array>
+</resources>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/appBody"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/totalBillLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/totalBillText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/total_bill"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/totalBillCost"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/start_bill"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/plateColorVerticalLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalBillLayout">
+
+        <LinearLayout
+            android:id="@+id/yellowPlateRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/yellowColorSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/color_spinner" />
+
+            <EditText
+                android:id="@+id/yellowPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/yellow_price" />
+
+            <TextView
+                android:id="@+id/yellowX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/multiply"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/yellowMinus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="yellowMinusButton"
+                android:text="@string/minus_button" />
+
+            <EditText
+                android:id="@+id/yellowNumberPlates"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="3"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/num_plates_start"
+                android:importantForAutofill="no" />
+
+            <Button
+                android:id="@+id/yellowPlus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="yellowPlusButton"
+                android:text="@string/plus_button" />
+
+            <TextView
+                android:id="@+id/yellowEquals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/equals"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/yellowPlateTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/start_bill"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/redPlateRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/redColorSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/color_spinner" />
+
+            <EditText
+                android:id="@+id/redPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/red_price" />
+
+            <TextView
+                android:id="@+id/redX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/multiply"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/redMinus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="redMinusButton"
+                android:text="@string/minus_button" />
+
+            <EditText
+                android:id="@+id/redNumberPlates"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="3"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/num_plates_start"
+                android:importantForAutofill="no" />
+
+            <Button
+                android:id="@+id/redPlus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="redPlusButton"
+                android:text="@string/plus_button" />
+
+            <TextView
+                android:id="@+id/redEquals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/equals"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/redPlateTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/start_bill"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/greenPlateRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/greenColorSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/color_spinner" />
+
+            <EditText
+                android:id="@+id/greenPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/green_price" />
+
+            <TextView
+                android:id="@+id/greenX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/multiply"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/greenMinus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="greenMinusButton"
+                android:text="@string/minus_button" />
+
+            <EditText
+                android:id="@+id/greenNumberPlates"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="3"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/num_plates_start"
+                android:importantForAutofill="no" />
+
+            <Button
+                android:id="@+id/greenPlus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="greenPlusButton"
+                android:text="@string/plus_button" />
+
+            <TextView
+                android:id="@+id/greenEquals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/equals"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/greenPlateTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/start_bill"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bluePlateRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/blueColorSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/color_spinner" />
+
+            <EditText
+                android:id="@+id/bluePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/blue_price" />
+
+            <TextView
+                android:id="@+id/blueX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/multiply"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/blueMinus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="blueMinusButton"
+                android:text="@string/minus_button" />
+
+            <EditText
+                android:id="@+id/blueNumberPlates"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="3"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/num_plates_start"
+                android:importantForAutofill="no" />
+
+            <Button
+                android:id="@+id/bluePlus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="bluePlusButton"
+                android:text="@string/plus_button" />
+
+            <TextView
+                android:id="@+id/blueEquals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/equals"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/bluePlateTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/start_bill"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/violetPlateRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/violetColorSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/color_spinner" />
+
+            <EditText
+                android:id="@+id/violetPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/violet_price" />
+
+            <TextView
+                android:id="@+id/violetX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/multiply"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/violetMinus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="violetMinusButton"
+                android:text="@string/minus_button" />
+
+            <EditText
+                android:id="@+id/violetNumberPlates"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="3"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@string/num_plates_start"
+                android:importantForAutofill="no" />
+
+            <Button
+                android:id="@+id/violetPlus"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="violetPlusButton"
+                android:text="@string/plus_button" />
+
+            <TextView
+                android:id="@+id/violetEquals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="@string/equals"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/violetPlateTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/start_bill"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
