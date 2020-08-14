@@ -42,10 +42,18 @@ public class MainActivity extends AppCompatActivity {
     // Allows doubles to be displayed to exactly two decimal points
     public static DecimalFormat money = new DecimalFormat("0.00");
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Getting a version of the local decimal format
+        DecimalFormat format = (DecimalFormat) DecimalFormat.getInstance();
+        // Accessing the specific decimal symbol for this locale
+        char decimalSeparator = format.getDecimalFormatSymbols().getDecimalSeparator();
+        // Cast the decimal separator char to a string for comparing later
+        final String dS = Character.toString(decimalSeparator);
 
         // ----- Text watchers for the editTexts -----
         // Accessing the editText for the number of yellow plates
@@ -112,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
                     // If it is empty, set the price to 0, but don't calculate
                     yellowPrice = 0;
                 }
-                // If the string is just a decimal point, wait for more user input
-                else if (yP.getText().toString().equals(".")) {}
+                // If the string is just a decimal separator, wait for more user input
+                else if (yP.getText().toString().equals(dS)) {}
                 // If it isn't empty or just a point, calculate the new yellow plate cost
                 else {
                     // Update yellowPrice with the user input in the editText
@@ -166,8 +174,8 @@ public class MainActivity extends AppCompatActivity {
                     // If it is empty, set the price to 0, but don't calculate
                     redPrice = 0;
                 }
-                // If the string is just a decimal point, wait for more user input
-                else if (rP.getText().toString().equals(".")) {}
+                // If the string is just a decimal separator, wait for more user input
+                else if (rP.getText().toString().equals(dS)) {}
                 // If it isn't empty or just a point, calculate the new red plate cost
                 else {
                     // Update redPrice with the user input in the editText
@@ -220,8 +228,8 @@ public class MainActivity extends AppCompatActivity {
                     // If it is empty, set the price to 0, but don't calculate
                     greenPrice = 0;
                 }
-                // If the string is just a decimal point, wait for more user input
-                else if (gP.getText().toString().equals(".")) {}
+                // If the string is just a decimal separator, wait for more user input
+                else if (gP.getText().toString().equals(dS)) {}
                 // If it isn't empty or just a point, calculate the new green plate cost
                 else {
                     // Update greenPrice with the user input in the editText
@@ -231,57 +239,111 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        // Text Watcher for the greenNumberPlates editText
-        gNP.addTextChangedListener(new TextWatcher() {
+        // Text Watcher for the blueNumberPlates editText
+        bNP.addTextChangedListener(new TextWatcher() {
 
             // Don't need the first two methods, so they are left blank
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-            // After the number of green plates is changed we need to update the numGreenPlates
-            // variable, and then recalculate the total from green plates
+            // After the number of blue plates is changed we need to update the numBluePlates
+            // variable, and then recalculate the total from blue plates
             @Override
             public void afterTextChanged(Editable s) {
 
                 // Check if the user input is currently empty
-                if (gNP.getText().toString().isEmpty()) {
+                if (bNP.getText().toString().isEmpty()) {
                     // Set the number of plates to 0, but don't recalculate yet
-                    numGreenPlates = 0;
+                    numBluePlates = 0;
                 }
-                // If it isn't empty calculate the new green plate cost
+                // If it isn't empty calculate the new blue plate cost
                 else {
-                    // Update numGreenPlates with the user input in the editText
-                    numGreenPlates = Integer.parseInt(gNP.getText().toString());
-                    // Calculate the new green plate cost
-                    calcAndDisplayGreen();
+                    // Update numBluePlates with the user input in the editText
+                    numBluePlates = Integer.parseInt(bNP.getText().toString());
+                    // Calculate the new blue plate cost
+                    calcAndDisplayBlue();
                 }
             }
         });
-        // Text Watcher for the price of green plates
-        gP.addTextChangedListener(new TextWatcher() {
+        // Text Watcher for the price of blue plates
+        bP.addTextChangedListener(new TextWatcher() {
 
             // Don't need the first two methods, so they are left blank
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-            // After the price of green plates is changed we need to update the greenPrice
+            // After the price of blue plates is changed we need to update the bluePrice
             // variable and recalculate the totals
             @Override
             public void afterTextChanged(Editable s) {
 
                 // Check if the user input is currently empty
-                if (gP.getText().toString().isEmpty()) {
+                if (bP.getText().toString().isEmpty()) {
                     // If it is empty, set the price to 0, but don't calculate
-                    greenPrice = 0;
+                    bluePrice = 0;
                 }
-                // If the string is just a decimal point, wait for more user input
-                else if (gP.getText().toString().equals(".")) {}
-                // If it isn't empty or just a point, calculate the new green plate cost
+                // If the string is just a decimal separator, wait for more user input
+                else if (bP.getText().toString().equals(dS)) {}
+                // If it isn't empty or just a point, calculate the new blue plate cost
                 else {
-                    // Update greenPrice with the user input in the editText
-                    greenPrice = Double.parseDouble(gP.getText().toString());
+                    // Update bluePrice with the user input in the editText
+                    bluePrice = Double.parseDouble(bP.getText().toString());
+                    // Calculate the new blue plate cost
+                    calcAndDisplayBlue();
+                }
+            }
+        });
+        // Text Watcher for the violetNumberPlates editText
+        vNP.addTextChangedListener(new TextWatcher() {
+
+            // Don't need the first two methods, so they are left blank
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            // After the number of violet plates is changed we need to update the numVioletPlates
+            // variable, and then recalculate the total from violet plates
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // Check if the user input is currently empty
+                if (vNP.getText().toString().isEmpty()) {
+                    // Set the number of plates to 0, but don't recalculate yet
+                    numVioletPlates = 0;
+                }
+                // If it isn't empty calculate the new violet plate cost
+                else {
+                    // Update numVioletPlates with the user input in the editText
+                    numVioletPlates = Integer.parseInt(vNP.getText().toString());
+                    // Calculate the new violet plate cost
+                    calcAndDisplayViolet();
+                }
+            }
+        });
+        // Text Watcher for the price of violet plates
+        vP.addTextChangedListener(new TextWatcher() {
+
+            // Don't need the first two methods, so they are left blank
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            // After the price of violet plates is changed we need to update the violetPrice
+            // variable and recalculate the totals
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                // Check if the user input is currently empty
+                if (vP.getText().toString().isEmpty()) {
+                    // If it is empty, set the price to 0, but don't calculate
+                    violetPrice = 0;
+                }
+                // If the string is just a decimal separator, wait for more user input
+                else if (vP.getText().toString().equals(dS)) {}
+                // If it isn't empty or just a point, calculate the new violet plate cost
+                else {
+                    // Update violetPrice with the user input in the editText
+                    violetPrice = Double.parseDouble(vP.getText().toString());
                     // Calculate the new green plate cost
-                    calcAndDisplayGreen();
+                    calcAndDisplayViolet();
                 }
             }
         });
