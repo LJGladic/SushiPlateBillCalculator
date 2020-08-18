@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         // Accessing the editText for the number of blue plates
         final EditText bNP = findViewById(R.id.blueNumberPlates);
         // Accessing the editText for the price of blue plates
-        final EditText bP = findViewById(R.id.bluePrice);
+        final EditText bP = findViewById(R.id.bluePrice); 
         // Accessing the editText for the number of violet plates
         final EditText vNP = findViewById(R.id.violetNumberPlates);
         // Accessing the editText for the price of violet plates
