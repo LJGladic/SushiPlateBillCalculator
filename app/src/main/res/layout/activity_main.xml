@@ -37,7 +37,7 @@
 
     <LinearLayout
         android:id="@+id/plateColorVerticalLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:orientation="vertical"
@@ -99,9 +99,11 @@
 
             <Button
                 android:id="@+id/yellowPlus"
-                android:background="@drawable/button_half_pill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_right"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="yellowPlusButton"
                 android:text="@string/plus_button" />
 
