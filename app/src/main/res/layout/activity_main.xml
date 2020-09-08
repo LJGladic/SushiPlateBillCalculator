@@ -47,7 +47,7 @@
 
         <LinearLayout
             android:id="@+id/yellowPlateRow"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="6dp"
@@ -99,7 +99,7 @@
 
             <Button
                 android:id="@+id/yellowPlus"
-                style="@style/Widget.AppCompat.Button.Small"
+                android:background="@drawable/button_half_pill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="yellowPlusButton"
