@@ -2,4 +2,6 @@
 <resources>
     <dimen name="small_button_width">35dp</dimen>
     <dimen name="small_button_height">38dp</dimen>
+    <dimen name="X_end_padding">4dp</dimen>
+    <dimen name="X_text_size">18sp</dimen>
 </resources>

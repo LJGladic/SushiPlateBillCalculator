@@ -47,7 +47,7 @@
 
         <LinearLayout
             android:id="@+id/yellowPlateRow"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="6dp"
@@ -76,13 +76,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/multiply"
-                android:textSize="18sp" />
+                android:paddingEnd="@dimen/X_end_padding"
+                android:textSize="@dimen/X_text_size" />
 
             <Button
                 android:id="@+id/yellowMinus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_left"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="yellowMinusButton"
                 android:text="@string/minus_button" />
 
@@ -158,13 +161,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/multiply"
-                android:textSize="18sp" />
+                android:paddingEnd="@dimen/X_end_padding"
+                android:textSize="@dimen/X_text_size" />
 
             <Button
                 android:id="@+id/redMinus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_left"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="redMinusButton"
                 android:text="@string/minus_button" />
 
@@ -181,9 +187,11 @@
 
             <Button
                 android:id="@+id/redPlus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_right"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="redPlusButton"
                 android:text="@string/plus_button" />
 
@@ -238,13 +246,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/multiply"
-                android:textSize="18sp" />
+                android:paddingEnd="@dimen/X_end_padding"
+                android:textSize="@dimen/X_text_size" />
 
             <Button
                 android:id="@+id/greenMinus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_left"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="greenMinusButton"
                 android:text="@string/minus_button" />
 
@@ -261,9 +272,11 @@
 
             <Button
                 android:id="@+id/greenPlus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_right"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="greenPlusButton"
                 android:text="@string/plus_button" />
 
@@ -318,13 +331,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/multiply"
-                android:textSize="18sp" />
+                android:paddingEnd="@dimen/X_end_padding"
+                android:textSize="@dimen/X_text_size" />
 
             <Button
                 android:id="@+id/blueMinus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_left"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="blueMinusButton"
                 android:text="@string/minus_button" />
 
@@ -341,9 +357,11 @@
 
             <Button
                 android:id="@+id/bluePlus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_right"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="bluePlusButton"
                 android:text="@string/plus_button" />
 
@@ -398,13 +416,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/multiply"
-                android:textSize="18sp" />
+                android:paddingEnd="@dimen/X_end_padding"
+                android:textSize="@dimen/X_text_size" />
 
             <Button
                 android:id="@+id/violetMinus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_left"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="violetMinusButton"
                 android:text="@string/minus_button" />
 
@@ -421,9 +442,11 @@
 
             <Button
                 android:id="@+id/violetPlus"
-                style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_half_pill_right"
+                android:minWidth="@dimen/small_button_width"
+                android:minHeight="@dimen/small_button_height"
                 android:onClick="violetPlusButton"
                 android:text="@string/plus_button" />
 
