@@ -2,6 +2,13 @@
 <resources>
     <dimen name="small_button_width">35dp</dimen>
     <dimen name="small_button_height">38dp</dimen>
+    <dimen name="row_top_padding">6dp</dimen>
+    <dimen name="row_bottom_padding">6dp</dimen>
     <dimen name="X_end_padding">4dp</dimen>
-    <dimen name="X_text_size">18sp</dimen>
+    <dimen name="X_start_padding">1dp</dimen>
+    <dimen name="text_size">18sp</dimen>
+    <dimen name="equals_start_padding">4dp</dimen>
+    <dimen name="equals_end_padding">4dp</dimen>
+    <integer name="price_max_length">5</integer>
+    <integer name="plate_max_length">3</integer>
 </resources>

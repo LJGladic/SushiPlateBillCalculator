@@ -14,11 +14,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Since I made this app for a very specific sushi place, the starting values, and colors of the
-    // different plates are based on this place.  As reflected below the plate colors in order from
-    // cheapest to most expensive are: Yellow < Red < Green < Blue < Purple.  The prices per plate
-    // in order are $2.50, $3.50, $4.50, $5.50, and $6.50.  They are all editable in app, I just am
-    // making it easy for myself until I add a way to save colors and prices at some point.
+    // Variables for the number of plates, the price per plate and the the total of each row.
 
     int numYellowPlates = 0; // The number of plates in the yellow (first) row
     int numRedPlates = 0; // The number of plates in the red (second) row
@@ -26,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
     int numBluePlates = 0; // The number of plates in the blue (fourth) row
     int numVioletPlates = 0; // The number of plates in the purple (fifth) row
 
-    double yellowPrice = 2.50; // The price of the yellow (first) plate type
-    double redPrice = 3.50; // The price of the red (second) plate type
-    double greenPrice = 4.50; // The price of the green (third) plate type
-    double bluePrice = 5.50; // The price of the blue (fourth) plate type
-    double violetPrice = 6.50; // The price of the purple (fifth) plate type
+    double yellowPrice = 0.00; // The price of the yellow (first) plate type
+    double redPrice = 0.00; // The price of the red (second) plate type
+    double greenPrice = 0.00; // The price of the green (third) plate type
+    double bluePrice = 0.00; // The price of the blue (fourth) plate type
+    double violetPrice = 0.00; // The price of the purple (fifth) plate type
 
     double totalBill = 0.00; // The total value of the bill, starts at $0.00
     double yellowPlateTotal = 0.00; // The total value of the yellow plates

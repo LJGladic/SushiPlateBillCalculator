@@ -41,6 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:orientation="vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -50,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="@dimen/row_top_padding"
+            android:paddingBottom="@dimen/row_bottom_padding">
 
             <Spinner
                 android:id="@+id/yellowColorSpinner"
@@ -65,19 +67,21 @@
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:maxLength="@integer/price_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/yellow_price" />
+                android:text="@string/start_plate_cost"
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/yellowX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/multiply"
+                android:paddingStart="@dimen/X_start_padding"
                 android:paddingEnd="@dimen/X_end_padding"
-                android:textSize="@dimen/X_text_size" />
+                android:text="@string/multiply"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/yellowMinus"
@@ -95,10 +99,11 @@
                 android:layout_height="match_parent"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="@integer/plate_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/num_plates_start" />
+                android:text="@string/num_plates_start"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/yellowPlus"
@@ -115,10 +120,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:paddingStart="@dimen/equals_start_padding"
+                android:paddingEnd="@dimen/equals_end_padding"
                 android:text="@string/equals"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/yellowPlateTotal"
@@ -126,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/start_bill"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
         </LinearLayout>
 
@@ -135,8 +140,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="@dimen/row_top_padding"
+            android:paddingBottom="@dimen/row_bottom_padding">
 
             <Spinner
                 android:id="@+id/redColorSpinner"
@@ -150,19 +155,21 @@
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:maxLength="@integer/price_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/red_price" />
+                android:text="@string/start_plate_cost"
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/redX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/multiply"
+                android:paddingStart="@dimen/X_start_padding"
                 android:paddingEnd="@dimen/X_end_padding"
-                android:textSize="@dimen/X_text_size" />
+                android:text="@string/multiply"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/redMinus"
@@ -180,10 +187,11 @@
                 android:layout_height="match_parent"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="@integer/plate_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/num_plates_start" />
+                android:text="@string/num_plates_start"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/redPlus"
@@ -200,10 +208,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:paddingStart="@dimen/equals_start_padding"
+                android:paddingEnd="@dimen/equals_end_padding"
                 android:text="@string/equals"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/redPlateTotal"
@@ -211,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/start_bill"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
         </LinearLayout>
 
@@ -220,8 +228,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="@dimen/row_top_padding"
+            android:paddingBottom="@dimen/row_bottom_padding">
 
             <Spinner
                 android:id="@+id/greenColorSpinner"
@@ -235,19 +243,21 @@
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:maxLength="@integer/price_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/green_price" />
+                android:text="@string/start_plate_cost"
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/greenX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/multiply"
+                android:paddingStart="@dimen/X_start_padding"
                 android:paddingEnd="@dimen/X_end_padding"
-                android:textSize="@dimen/X_text_size" />
+                android:text="@string/multiply"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/greenMinus"
@@ -265,10 +275,11 @@
                 android:layout_height="match_parent"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="@integer/plate_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/num_plates_start" />
+                android:text="@string/num_plates_start"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/greenPlus"
@@ -285,10 +296,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:paddingStart="@dimen/equals_start_padding"
+                android:paddingEnd="@dimen/equals_end_padding"
                 android:text="@string/equals"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/greenPlateTotal"
@@ -296,7 +307,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/start_bill"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
         </LinearLayout>
 
@@ -305,8 +316,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="@dimen/row_top_padding"
+            android:paddingBottom="@dimen/row_bottom_padding">
 
             <Spinner
                 android:id="@+id/blueColorSpinner"
@@ -320,19 +331,21 @@
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:maxLength="@integer/price_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/blue_price" />
+                android:text="@string/start_plate_cost"
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/blueX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/multiply"
+                android:paddingStart="@dimen/X_start_padding"
                 android:paddingEnd="@dimen/X_end_padding"
-                android:textSize="@dimen/X_text_size" />
+                android:text="@string/multiply"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/blueMinus"
@@ -350,10 +363,11 @@
                 android:layout_height="match_parent"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="@integer/plate_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/num_plates_start" />
+                android:text="@string/num_plates_start"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/bluePlus"
@@ -370,10 +384,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:paddingStart="@dimen/equals_start_padding"
+                android:paddingEnd="@dimen/equals_end_padding"
                 android:text="@string/equals"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/bluePlateTotal"
@@ -381,7 +395,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/start_bill"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
         </LinearLayout>
 
@@ -390,8 +404,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
+            android:paddingTop="@dimen/row_top_padding"
+            android:paddingBottom="@dimen/row_bottom_padding">
 
             <Spinner
                 android:id="@+id/violetColorSpinner"
@@ -405,19 +419,21 @@
                 android:layout_height="wrap_content"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:maxLength="@integer/price_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/violet_price" />
+                android:text="@string/start_plate_cost"
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/violetX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/multiply"
+                android:paddingStart="@dimen/X_start_padding"
                 android:paddingEnd="@dimen/X_end_padding"
-                android:textSize="@dimen/X_text_size" />
+                android:text="@string/multiply"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/violetMinus"
@@ -435,10 +451,11 @@
                 android:layout_height="match_parent"
                 android:importantForAutofill="no"
                 android:inputType="number"
-                android:maxLength="3"
+                android:maxLength="@integer/plate_max_length"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:text="@string/num_plates_start" />
+                android:text="@string/num_plates_start"
+                android:textSize="@dimen/text_size" />
 
             <Button
                 android:id="@+id/violetPlus"
@@ -455,10 +472,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:paddingStart="@dimen/equals_start_padding"
+                android:paddingEnd="@dimen/equals_end_padding"
                 android:text="@string/equals"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/violetPlateTotal"
@@ -466,7 +483,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="@string/start_bill"
-                android:textSize="18sp" />
+                android:textSize="@dimen/text_size" />
 
         </LinearLayout>
 
