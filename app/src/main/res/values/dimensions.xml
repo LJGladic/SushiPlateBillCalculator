@@ -10,5 +10,7 @@
     <dimen name="equals_start_padding">4dp</dimen>
     <dimen name="equals_end_padding">4dp</dimen>
     <integer name="price_max_length">5</integer>
+    <integer name="price_min_ems">3</integer>
     <integer name="plate_max_length">3</integer>
+    <integer name="plate_min_ems">2</integer>
 </resources>
