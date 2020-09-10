@@ -11,6 +11,7 @@
         android:id="@+id/rowAndButtonScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fillViewport="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +25,8 @@
             <HorizontalScrollView
                 android:id="@+id/plateRowHorizontalScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:fillViewport="false">
 
                 <LinearLayout
                     android:id="@+id/plateColorVerticalLayout"
