@@ -7,6 +7,500 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ScrollView
+        android:id="@+id/rowAndButtonScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/rowAndButtonVerticalLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:id="@+id/plateRowHorizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/plateColorVerticalLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="vertical"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="1dp">
+
+                    <LinearLayout
+                        android:id="@+id/yellowPlateRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/row_top_padding"
+                        android:paddingBottom="@dimen/row_bottom_padding">
+
+                        <Spinner
+                            android:id="@+id/yellowColorSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/color_spinner" />
+
+                        <EditText
+                            android:id="@+id/yellowPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:maxLength="@integer/price_max_length"
+                            android:minEms="@integer/price_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/start_plate_cost"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/yellowX"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/X_start_padding"
+                            android:paddingEnd="@dimen/X_end_padding"
+                            android:text="@string/multiply"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/yellowMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_left"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="yellowMinusButton"
+                            android:text="@string/minus_button" />
+
+                        <EditText
+                            android:id="@+id/yellowNumberPlates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:maxLength="@integer/plate_max_length"
+                            android:minEms="@integer/plate_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/num_plates_start"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/yellowPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_right"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="yellowPlusButton"
+                            android:text="@string/plus_button" />
+
+                        <TextView
+                            android:id="@+id/yellowEquals"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/equals_start_padding"
+                            android:paddingEnd="@dimen/equals_end_padding"
+                            android:text="@string/equals"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/yellowPlateTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/start_bill"
+                            android:textSize="@dimen/text_size" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/redPlateRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/row_top_padding"
+                        android:paddingBottom="@dimen/row_bottom_padding">
+
+                        <Spinner
+                            android:id="@+id/redColorSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/color_spinner" />
+
+                        <EditText
+                            android:id="@+id/redPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:maxLength="@integer/price_max_length"
+                            android:minEms="@integer/price_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/start_plate_cost"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/redX"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/X_start_padding"
+                            android:paddingEnd="@dimen/X_end_padding"
+                            android:text="@string/multiply"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/redMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_left"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="redMinusButton"
+                            android:text="@string/minus_button" />
+
+                        <EditText
+                            android:id="@+id/redNumberPlates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:maxLength="@integer/plate_max_length"
+                            android:minEms="@integer/plate_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/num_plates_start"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/redPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_right"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="redPlusButton"
+                            android:text="@string/plus_button" />
+
+                        <TextView
+                            android:id="@+id/redEquals"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/equals_start_padding"
+                            android:paddingEnd="@dimen/equals_end_padding"
+                            android:text="@string/equals"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/redPlateTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/start_bill"
+                            android:textSize="@dimen/text_size" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/greenPlateRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/row_top_padding"
+                        android:paddingBottom="@dimen/row_bottom_padding">
+
+                        <Spinner
+                            android:id="@+id/greenColorSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/color_spinner" />
+
+                        <EditText
+                            android:id="@+id/greenPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:maxLength="@integer/price_max_length"
+                            android:minEms="@integer/price_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/start_plate_cost"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/greenX"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/X_start_padding"
+                            android:paddingEnd="@dimen/X_end_padding"
+                            android:text="@string/multiply"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/greenMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_left"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="greenMinusButton"
+                            android:text="@string/minus_button" />
+
+                        <EditText
+                            android:id="@+id/greenNumberPlates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:maxLength="@integer/plate_max_length"
+                            android:minEms="@integer/plate_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/num_plates_start"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/greenPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_right"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="greenPlusButton"
+                            android:text="@string/plus_button" />
+
+                        <TextView
+                            android:id="@+id/greenEquals"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/equals_start_padding"
+                            android:paddingEnd="@dimen/equals_end_padding"
+                            android:text="@string/equals"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/greenPlateTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/start_bill"
+                            android:textSize="@dimen/text_size" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bluePlateRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/row_top_padding"
+                        android:paddingBottom="@dimen/row_bottom_padding">
+
+                        <Spinner
+                            android:id="@+id/blueColorSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/color_spinner" />
+
+                        <EditText
+                            android:id="@+id/bluePrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:maxLength="@integer/price_max_length"
+                            android:minEms="@integer/price_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/start_plate_cost"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/blueX"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/X_start_padding"
+                            android:paddingEnd="@dimen/X_end_padding"
+                            android:text="@string/multiply"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/blueMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_left"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="blueMinusButton"
+                            android:text="@string/minus_button" />
+
+                        <EditText
+                            android:id="@+id/blueNumberPlates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:maxLength="@integer/plate_max_length"
+                            android:minEms="@integer/plate_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/num_plates_start"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/bluePlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_right"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="bluePlusButton"
+                            android:text="@string/plus_button" />
+
+                        <TextView
+                            android:id="@+id/blueEquals"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/equals_start_padding"
+                            android:paddingEnd="@dimen/equals_end_padding"
+                            android:text="@string/equals"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/bluePlateTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/start_bill"
+                            android:textSize="@dimen/text_size" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/violetPlateRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/row_top_padding"
+                        android:paddingBottom="@dimen/row_bottom_padding">
+
+                        <Spinner
+                            android:id="@+id/violetColorSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/color_spinner" />
+
+                        <EditText
+                            android:id="@+id/violetPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="numberDecimal"
+                            android:maxLength="@integer/price_max_length"
+                            android:minEms="@integer/price_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/start_plate_cost"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/violetX"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/X_start_padding"
+                            android:paddingEnd="@dimen/X_end_padding"
+                            android:text="@string/multiply"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/violetMinus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_left"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="violetMinusButton"
+                            android:text="@string/minus_button" />
+
+                        <EditText
+                            android:id="@+id/violetNumberPlates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:importantForAutofill="no"
+                            android:inputType="number"
+                            android:maxLength="@integer/plate_max_length"
+                            android:minEms="@integer/plate_min_ems"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:text="@string/num_plates_start"
+                            android:textSize="@dimen/text_size" />
+
+                        <Button
+                            android:id="@+id/violetPlus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_half_pill_right"
+                            android:minWidth="@dimen/small_button_width"
+                            android:minHeight="@dimen/small_button_height"
+                            android:onClick="violetPlusButton"
+                            android:text="@string/plus_button" />
+
+                        <TextView
+                            android:id="@+id/violetEquals"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="@dimen/equals_start_padding"
+                            android:paddingEnd="@dimen/equals_end_padding"
+                            android:text="@string/equals"
+                            android:textSize="@dimen/text_size" />
+
+                        <TextView
+                            android:id="@+id/violetPlateTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/start_bill"
+                            android:textSize="@dimen/text_size" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:id="@+id/buttonLayoutSuper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
     <LinearLayout
         android:id="@+id/totalBillLayout"
         android:layout_width="wrap_content"
@@ -34,469 +528,4 @@
             android:textSize="30sp" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/plateColorVerticalLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        android:paddingStart="4dp"
-        android:paddingEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/yellowPlateRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/row_top_padding"
-            android:paddingBottom="@dimen/row_bottom_padding">
-
-            <Spinner
-                android:id="@+id/yellowColorSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/color_spinner" />
-
-            <EditText
-                android:id="@+id/yellowPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:maxLength="@integer/price_max_length"
-                android:minEms="@integer/price_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/start_plate_cost"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/yellowX"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/X_start_padding"
-                android:paddingEnd="@dimen/X_end_padding"
-                android:text="@string/multiply"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/yellowMinus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_left"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="yellowMinusButton"
-                android:text="@string/minus_button" />
-
-            <EditText
-                android:id="@+id/yellowNumberPlates"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="@integer/plate_max_length"
-                android:minEms="@integer/plate_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/num_plates_start"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/yellowPlus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_right"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="yellowPlusButton"
-                android:text="@string/plus_button" />
-
-            <TextView
-                android:id="@+id/yellowEquals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/equals_start_padding"
-                android:paddingEnd="@dimen/equals_end_padding"
-                android:text="@string/equals"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/yellowPlateTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/start_bill"
-                android:textSize="@dimen/text_size" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/redPlateRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/row_top_padding"
-            android:paddingBottom="@dimen/row_bottom_padding">
-
-            <Spinner
-                android:id="@+id/redColorSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/color_spinner" />
-
-            <EditText
-                android:id="@+id/redPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:maxLength="@integer/price_max_length"
-                android:minEms="@integer/price_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/start_plate_cost"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/redX"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/X_start_padding"
-                android:paddingEnd="@dimen/X_end_padding"
-                android:text="@string/multiply"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/redMinus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_left"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="redMinusButton"
-                android:text="@string/minus_button" />
-
-            <EditText
-                android:id="@+id/redNumberPlates"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="@integer/plate_max_length"
-                android:minEms="@integer/plate_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/num_plates_start"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/redPlus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_right"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="redPlusButton"
-                android:text="@string/plus_button" />
-
-            <TextView
-                android:id="@+id/redEquals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/equals_start_padding"
-                android:paddingEnd="@dimen/equals_end_padding"
-                android:text="@string/equals"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/redPlateTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/start_bill"
-                android:textSize="@dimen/text_size" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/greenPlateRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/row_top_padding"
-            android:paddingBottom="@dimen/row_bottom_padding">
-
-            <Spinner
-                android:id="@+id/greenColorSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/color_spinner" />
-
-            <EditText
-                android:id="@+id/greenPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:maxLength="@integer/price_max_length"
-                android:minEms="@integer/price_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/start_plate_cost"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/greenX"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/X_start_padding"
-                android:paddingEnd="@dimen/X_end_padding"
-                android:text="@string/multiply"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/greenMinus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_left"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="greenMinusButton"
-                android:text="@string/minus_button" />
-
-            <EditText
-                android:id="@+id/greenNumberPlates"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="@integer/plate_max_length"
-                android:minEms="@integer/plate_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/num_plates_start"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/greenPlus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_right"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="greenPlusButton"
-                android:text="@string/plus_button" />
-
-            <TextView
-                android:id="@+id/greenEquals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/equals_start_padding"
-                android:paddingEnd="@dimen/equals_end_padding"
-                android:text="@string/equals"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/greenPlateTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/start_bill"
-                android:textSize="@dimen/text_size" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/bluePlateRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/row_top_padding"
-            android:paddingBottom="@dimen/row_bottom_padding">
-
-            <Spinner
-                android:id="@+id/blueColorSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/color_spinner" />
-
-            <EditText
-                android:id="@+id/bluePrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:maxLength="@integer/price_max_length"
-                android:minEms="@integer/price_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/start_plate_cost"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/blueX"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/X_start_padding"
-                android:paddingEnd="@dimen/X_end_padding"
-                android:text="@string/multiply"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/blueMinus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_left"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="blueMinusButton"
-                android:text="@string/minus_button" />
-
-            <EditText
-                android:id="@+id/blueNumberPlates"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="@integer/plate_max_length"
-                android:minEms="@integer/plate_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/num_plates_start"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/bluePlus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_right"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="bluePlusButton"
-                android:text="@string/plus_button" />
-
-            <TextView
-                android:id="@+id/blueEquals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/equals_start_padding"
-                android:paddingEnd="@dimen/equals_end_padding"
-                android:text="@string/equals"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/bluePlateTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/start_bill"
-                android:textSize="@dimen/text_size" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/violetPlateRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/row_top_padding"
-            android:paddingBottom="@dimen/row_bottom_padding">
-
-            <Spinner
-                android:id="@+id/violetColorSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/color_spinner" />
-
-            <EditText
-                android:id="@+id/violetPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:maxLength="@integer/price_max_length"
-                android:minEms="@integer/price_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/start_plate_cost"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/violetX"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/X_start_padding"
-                android:paddingEnd="@dimen/X_end_padding"
-                android:text="@string/multiply"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/violetMinus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_left"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="violetMinusButton"
-                android:text="@string/minus_button" />
-
-            <EditText
-                android:id="@+id/violetNumberPlates"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:maxLength="@integer/plate_max_length"
-                android:minEms="@integer/plate_min_ems"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:text="@string/num_plates_start"
-                android:textSize="@dimen/text_size" />
-
-            <Button
-                android:id="@+id/violetPlus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_half_pill_right"
-                android:minWidth="@dimen/small_button_width"
-                android:minHeight="@dimen/small_button_height"
-                android:onClick="violetPlusButton"
-                android:text="@string/plus_button" />
-
-            <TextView
-                android:id="@+id/violetEquals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/equals_start_padding"
-                android:paddingEnd="@dimen/equals_end_padding"
-                android:text="@string/equals"
-                android:textSize="@dimen/text_size" />
-
-            <TextView
-                android:id="@+id/violetPlateTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/start_bill"
-                android:textSize="@dimen/text_size" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
