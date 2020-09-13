@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Variables for the number of plates, the price per plate and the the total of each row.
+    // Old variable TODO update and remove these when done with other stuff.
 
     int numYellowPlates = 0; // The number of plates in the yellow (first) row
     int numRedPlates = 0; // The number of plates in the red (second) row
@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     double greenPrice = 0.00; // The price of the green (third) plate type
     double bluePrice = 0.00; // The price of the blue (fourth) plate type
     double violetPrice = 0.00; // The price of the purple (fifth) plate type
-
     double totalBill = 0.00; // The total value of the bill, starts at $0.00
+
     double yellowPlateTotal = 0.00; // The total value of the yellow plates
     double redPlateTotal = 0.00; // The total value of the red plates
     double greenPlateTotal = 0.00; // The total value of the green plates
@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         // Cast the decimal separator char to a string for comparing later
         final String dS = Character.toString(decimalSeparator);
 
-        // ----- Text watchers for the editTexts -----
+
+        // ----- Text watchers for the editTexts TODO add this to main loop-----
         // Accessing the editText for the number of yellow plates
         final EditText yNP = findViewById(R.id.yellowNumberPlates);
         // Accessing the editText for the price of yellow plates

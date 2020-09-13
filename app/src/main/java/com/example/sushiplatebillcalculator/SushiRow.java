@@ -53,6 +53,8 @@ public class SushiRow {
         updateRowTotal();
     }
 
+    // Since rowTotal is exclusively based on numPlates * price, it gets updated every time that
+    // price or numPlates are updated.
     private void updateRowTotal() {
         rowTotal = numPlates * price;
     }
