@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -77,11 +80,39 @@ public class MainActivity2 extends AppCompatActivity {
         // Accessing the Linear Layout where all of the rows are added
         LinearLayout rowContainer = findViewById(R.id.plateRowVerticalLayout);
 
+        // Layout params for all the Views being added
+        LayoutParams params = new LinearLayout.LayoutParams(
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
         // Create the LinearLayout that will hold the row
         LinearLayout layout = new LinearLayout(this);
         // Set the ID of the LinearLayout to the current row number
         layout.setId(numRows);
-        // Setting the other params of the LinearLayout
+        // Setting the layout params of the LinearLayout
+        layout.setLayoutParams(params);
+        // Setting the orientation of the LinearLayout
+        layout.setOrientation(LinearLayout.HORIZONTAL);
+        // Setting padding, only at the start and end, of the LinearLayout
+        layout.setPaddingRelative(0,
+                getResources().getDimensionPixelOffset(R.dimen.row_top_padding),0,
+                getResources().getDimensionPixelOffset(R.dimen.row_bottom_padding));
+        // Add this row's linear layout to the vertical layout
+        rowContainer.addView(layout);
+
+        // Create the Spinner at the start of the row
+        Spinner colorSpinner = new Spinner(this);
+        // Set the id using the offset so we can find it later
+        colorSpinner.setId(numRows + spinnerOffset);
+        // Set the layout parameters of the Spinner
+        colorSpinner.setLayoutParams(params);
+        // Set the list used to populate the spinner choices, from resources
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
+                this, R.array.color_spinner, android.R.layout.simple_spinner_item);
+        // Setting the type of dropdown menu to the simple Android option
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Attaching the spinner adapter to the actual spinner item View
+        colorSpinner.setAdapter(spinnerAdapter);
+
 
 
         // Populate the HashMap with a new SushiRow for this new row
