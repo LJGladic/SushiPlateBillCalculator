@@ -7,4 +7,12 @@
     <color name="button_dark_gray">#96A2B5</color>
     <color name="stroke_lighter">#424447</color>
     <color name="stroke_darker">#252629</color>
+    <array name="color_spinner_color_list">
+        <item>
+            <color name="spinner_select_a_color">#FFFFFF</color>
+        </item>
+        <item>
+            <color name="spinner_black">#000000</color>
+        </item>
+    </array>
 </resources>

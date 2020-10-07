@@ -11,6 +11,7 @@
     <string name="equals">=</string>
     <string-array name="color_spinner">
         <item>Select Color</item>
+        <item>Black</item>
         <item>Blue</item>
         <item>Brown</item>
         <item>Gray</item>
@@ -19,7 +20,6 @@
         <item>Pink</item>
         <item>Purple</item>
         <item>Red</item>
-        <item>White</item>
         <item>Yellow</item>
     </string-array>
 </resources>
