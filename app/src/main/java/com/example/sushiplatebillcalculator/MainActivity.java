@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Create the EditText that will hold the number of plates of the row
         EditText plateEdit = new EditText(this);
-        // Set the id of the plate EditText
+        // Set the id of the plate EditText so it can be found later
         plateEdit.setId(numRows + numPlatesOffset);
         // Set the Layout Parameters of the EditText
         plateEdit.setLayoutParams(params);
@@ -249,7 +249,58 @@ public class MainActivity extends AppCompatActivity {
         // Add the EditText to the LinearLayout for this row
         layout.addView(plateEdit);
 
+        // Create the plus button for the row
+        Button plusButton = new Button(this);
+        // Set the layout params of the button
+        plusButton.setLayoutParams(params);
+        // Set the text of the button to "-"
+        plusButton.setText(getResources().getString(R.string.plus_button));
+        // Set the background drawable of the button
+        plusButton.setBackground(getResources().getDrawable(R.drawable.button_half_pill_right));
+        // Set the min width of the button, we need to override both minWidth and MinimumWidth here
+        plusButton.setMinimumWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonWidth, getResources().getDisplayMetrics()));
+        plusButton.setMinWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonWidth, getResources().getDisplayMetrics()));
+        // Set the min height of the button, we need to override both minHeight and minimumHeight
+        plusButton.setMinHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonHeight, getResources().getDisplayMetrics()));
+        plusButton.setMinimumHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonHeight, getResources().getDisplayMetrics()));
+        // Add the button to the LinearLayout of the row
+        layout.addView(plusButton);
 
+        // Create the TextView that holds the "=" symbol
+        TextView equalView = new TextView(this);
+        // Set the layout params of the TextView
+        equalView.setLayoutParams(params);
+        // Set the padding of the TextView
+        equalView.setPaddingRelative(
+                getResources().getDimensionPixelOffset(R.dimen.equals_start_padding),
+                0, getResources().getDimensionPixelOffset(R.dimen.equals_end_padding), 0);
+        // Set the text size of the view
+        equalView.setTextSize(textSize);
+        // Set the gravity of the text view
+        equalView.setGravity(Gravity.CENTER_VERTICAL);
+        // Set the text of the view
+        equalView.setText(getResources().getString(R.string.equals));
+        // Add the view to the layout of the row
+        layout.addView(equalView);
+
+        // Create the TextView to hold to row total
+        TextView rowTotal = new TextView(this);
+        // Set the id of the TextView so it can be found later
+        rowTotal.setId(numRows + rowTotalOffset);
+        // Set the layout params of the view
+        rowTotal.setLayoutParams(params);
+        // Set the text size of the view
+        rowTotal.setTextSize(textSize);
+        // Set the gravity of the view
+        rowTotal.setGravity(Gravity.CENTER_VERTICAL);
+        // Set the initial text of the view
+        rowTotal.setText(getResources().getString(R.string.start_bill));
+        // Add the view to the layout of the row
+        layout.addView(rowTotal);
 
 
 
