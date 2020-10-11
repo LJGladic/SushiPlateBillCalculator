@@ -9,11 +9,13 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     final static int minEmsPrice = 3; // Minimum width in characters of the price EditText
     final static int minEmsPlates = 2; // Minimum width in characters of the plates EditText
     final static int maxCharsPrice = 5; // Max number of characters allowed in the price
+    final static int maxCharsPlates = 3; // Max number of characters allowed for plates
+    final static int minButtonWidth = 35; // Min width of the + and - buttons
+    final static int minButtonHeight = 38; // Min height of the + and - buttons
     final static float textSize = 18f; // The default text size
 
 
@@ -187,6 +192,63 @@ public class MainActivity extends AppCompatActivity {
         priceEdit.setMaxLines(maxLines);
         // Add the EditText to the LinearLayout for this row
         layout.addView(priceEdit);
+
+        // Create the text view that will hold the "X" symbol
+        TextView xView = new TextView(this);
+        // Set the layout parameters of the TextView
+        xView.setLayoutParams(params);
+        // Set the padding for the TextView
+        xView.setPaddingRelative(getResources().getDimensionPixelOffset(R.dimen.X_start_padding),
+                0, getResources().getDimensionPixelOffset(R.dimen.X_end_padding), 0);
+        // Set the text of the TextView to "X"
+        xView.setText(getResources().getString(R.string.multiply));
+        // Set the text size of the TextView
+        xView.setTextSize(textSize);
+        // Set the gravity of the TextView
+        xView.setGravity(Gravity.CENTER_VERTICAL);
+        // Add the TextView to the LinearLayout for the row
+        layout.addView(xView);
+
+        // Create the minus button for the row
+        Button minusButton = new Button(this);
+        // Set the layout params of the button
+        minusButton.setLayoutParams(params);
+        // Set the text of the button to "-"
+        minusButton.setText(getResources().getString(R.string.minus_button));
+        // Set the background drawable of the button
+        minusButton.setBackground(getResources().getDrawable(R.drawable.button_half_pill_left));
+        // Set the min width of the button, we need to override both minWidth and MinimumWidth here
+        minusButton.setMinimumWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonWidth, getResources().getDisplayMetrics()));
+        minusButton.setMinWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonWidth, getResources().getDisplayMetrics()));
+        // Set the min height of the button, we need to override both minHeight and minimumHeight
+        minusButton.setMinHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonHeight, getResources().getDisplayMetrics()));
+        minusButton.setMinimumHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                minButtonHeight, getResources().getDisplayMetrics()));
+        // Add the button to the LinearLayout of the row
+        layout.addView(minusButton);
+
+        // Create the EditText that will hold the number of plates of the row
+        EditText plateEdit = new EditText(this);
+        // Set the id of the plate EditText
+        plateEdit.setId(numRows + numPlatesOffset);
+        // Set the Layout Parameters of the EditText
+        plateEdit.setLayoutParams(params);
+        // Set the input type to a decimal number
+        plateEdit.setInputType(InputType.TYPE_CLASS_NUMBER);
+        // Set the textSize of the EditText
+        plateEdit.setTextSize(textSize);
+        // Set the max length of the EditText using input filters
+        plateEdit.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxCharsPlates)});
+        // Set the min width of the EditText in terms of size of the characters in the font
+        plateEdit.setMinEms(minEmsPlates);
+        // Set the max number of lines for the EditText
+        plateEdit.setMaxLines(maxLines);
+        // Add the EditText to the LinearLayout for this row
+        layout.addView(plateEdit);
+
 
 
 
