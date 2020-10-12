@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -43,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     final static int numPlatesOffset = 300; // Offset between row id and plate view
     final static int rowTotalOffset = 400; // Offset between row id and row total view
 
+    // String that stores the decimal separator of the phone
+    String dS;
+
 
     // Allows doubles to be displayed to exactly two decimal points
     public static DecimalFormat money = new DecimalFormat("0.00");
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         // Accessing the specific decimal symbol for this locale
         char decimalSeparator = format.getDecimalFormatSymbols().getDecimalSeparator();
         // Cast the decimal separator char to a string for comparing later
-        final String dS = Character.toString(decimalSeparator);
+        dS = Character.toString(decimalSeparator);
 
         // Creates maxDefaultRows number of rows in the app in the plateRowVerticalLayout view
         for (int i = 0; i < maxDefaultRows; i++) {
@@ -94,6 +96,27 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = findViewById(R.id.totalBillCost);
         // Setting the textView to the new total bill
         tv.setText(money.format(totalBill));
+    }
+
+    // Updates the TextView with the current total for the row, based on the given rowID
+    public void displayRowTotal(int rowID) {
+
+        // Get the row total that was calculated from the appropriate SushiRow
+        double rowTotal = rowInfo.get(rowID).getRowTotal();
+        // Access the TextView that holds the total for this row
+        TextView tv = findViewById(rowID + rowTotalOffset);
+        // Set the text of the TextView to the new row total
+        tv.setText(money.format(rowTotal));
+        // Update the total bill since a row total was updated
+        calcAndDisplayTotal();
+    }
+
+    // Method of convenience, since .replace isn't supported until API level 24
+    public void replace(int key, SushiRow row) {
+        // Remove the old mapping for this key
+        rowInfo.remove(key);
+        // Map the new row to this key
+        rowInfo.put(key, row);
     }
 
     // Method called that adds a new row to the app.  Anytime a row is constructed, this method is
@@ -161,10 +184,8 @@ public class MainActivity extends AppCompatActivity {
                 SushiRow spinnerRow = rowInfo.get(spinnerRowId);
                 // Update the SushiRow with the position of the selected item
                 spinnerRow.setColorSelected(position);
-                // .replace isn't supported until v24, so we need to remove the old value instead
-                rowInfo.remove(spinnerRowId);
-                // And now we put the updated SushiRow in, mapped to the row id
-                rowInfo.put(spinnerRowId, spinnerRow);
+                // Replace the old SushiRow with the new one for this row
+                replace(spinnerRowId, spinnerRow);
             }
 
             // When nothing is selected, nothing needs to happen, so it doesn't need any code
@@ -301,6 +322,49 @@ public class MainActivity extends AppCompatActivity {
         rowTotal.setText(getResources().getString(R.string.start_bill));
         // Add the view to the layout of the row
         layout.addView(rowTotal);
+
+        // Adding a text watcher to the price EditText
+        priceEdit.addTextChangedListener(new TextWatcherWithEditText(priceEdit) {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            // After text is edited we need to update the proper filed in the SushiRow for this row
+            // of the app, push the new row total, and calculate and display the new total bill
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                /// Determine the ID of this row
+                int rowId = getEditText().getId() - priceOffset;
+                // Grab the SushiRow for this row
+                SushiRow thisRow = rowInfo.get(rowId);
+                // Get the text from the EditText
+                String priceString = getEditText().getText().toString();
+
+                // If the entered text is empty, or just the decimal separator,
+                // set the value of the price to 0
+                if (priceString.isEmpty() || priceString.equals(dS)) {
+
+                    // Set the price value to 0
+                    thisRow.setPrice(0);
+                }
+                // Otherwise if the EditText is not empty and does not contain just the decimal
+                // separator, update the price to the entered value
+                else {
+
+                    // Parse it into a double and set the price for this row
+                    thisRow.setPrice(Double.parseDouble(priceString));
+                }
+
+                // Replace the SushiRow in the HashMap with the updated one
+                replace(rowId, thisRow);
+                // Display the new row total for this row
+                displayRowTotal(rowId);
+            }
+        });
+
 
 
 
