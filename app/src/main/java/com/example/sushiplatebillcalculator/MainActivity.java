@@ -111,14 +111,6 @@ public class MainActivity extends AppCompatActivity {
         calcAndDisplayTotal();
     }
 
-    // Method of convenience, since .replace isn't supported until API level 24
-    public void replace(int key, SushiRow row) {
-        // Remove the old mapping for this key
-        rowInfo.remove(key);
-        // Map the new row to this key
-        rowInfo.put(key, row);
-    }
-
     // Method called that adds a new row to the app.  Anytime a row is constructed, this method is
     // called, whether at app creation, adding a row button is pushed, or when loading from a preset.asd
     public void addRow() {
@@ -185,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 // Update the SushiRow with the position of the selected item
                 spinnerRow.setColorSelected(position);
                 // Replace the old SushiRow with the new one for this row
-                replace(spinnerRowId, spinnerRow);
+                rowInfo.put(spinnerRowId, spinnerRow);
             }
 
             // When nothing is selected, nothing needs to happen, so it doesn't need any code
@@ -325,6 +317,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Adding a text watcher to the price EditText
         priceEdit.addTextChangedListener(new TextWatcherWithEditText(priceEdit) {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -359,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // Replace the SushiRow in the HashMap with the updated one
-                replace(rowId, thisRow);
+                rowInfo.put(rowId, thisRow);
                 // Display the new row total for this row
                 displayRowTotal(rowId);
             }
