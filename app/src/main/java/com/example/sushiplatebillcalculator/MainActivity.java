@@ -111,6 +111,20 @@ public class MainActivity extends AppCompatActivity {
         calcAndDisplayTotal();
     }
 
+    // Takes the row number and to new value to be displayed.  Finds the correct EditText and
+    // Updates the value of its' text
+    public void displayNumPlates(int rowId) {
+
+        // Get the SushiRow for this row
+        SushiRow thisRow = rowInfo.get(rowId);
+        // Find the EditText we are looking for using the rowId
+        EditText et = findViewById(rowId + numPlatesOffset);
+        // Set the text of the EditText to the new value
+        et.setText(Integer.toString(thisRow.getNumPlates()));
+        // Update the row total since we updated the number of plates
+        displayRowTotal(rowId);
+    }
+
     // Method called that adds a new row to the app.  Anytime a row is constructed, this method is
     // called, whether at app creation, adding a row button is pushed, or when loading from a preset.asd
     public void addRow() {
@@ -244,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
         layout.addView(minusButton);
 
         // Create the EditText that will hold the number of plates of the row
-        EditText plateEdit = new EditText(this);
+        final EditText plateEdit = new EditText(this);
         // Set the id of the plate EditText so it can be found later
         plateEdit.setId(numRows + numPlatesOffset);
         // Set the Layout Parameters of the EditText
@@ -315,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
         // Add the view to the layout of the row
         layout.addView(rowTotal);
 
-        // Adding a text watcher to the price EditText
+        // Adding a Text Watcher to the price EditText
         priceEdit.addTextChangedListener(new TextWatcherWithEditText(priceEdit) {
 
             @Override
@@ -329,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-                /// Determine the ID of this row
+                // Determine the ID of this row
                 int rowId = getEditText().getId() - priceOffset;
                 // Grab the SushiRow for this row
                 SushiRow thisRow = rowInfo.get(rowId);
@@ -358,9 +372,110 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Adding a Text Watcher to the plates EditText
+        plateEdit.addTextChangedListener(new TextWatcherWithEditText(plateEdit) {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
+            // After the number of plates is changed we need update the total for the row and then
+            // the total bill
+            @Override
+            public void afterTextChanged(Editable s) {
 
+                // Determine the ID of this row
+                int rowId = getEditText().getId() - numPlatesOffset;
+                // Grab the SushiRow for this row
+                SushiRow thisRow = rowInfo.get(rowId);
+                // Get the text from the EditText
+                String plateString = getEditText().getText().toString();
+
+                // If the entered text is empty, treat it as a 0, ans set the appropriate value
+                // in the SushiRow for this row
+                if (plateString.isEmpty()) {
+
+                    // Set the number of plates to 0
+                    thisRow.setNumPlates(0);
+                }
+                // Otherwise update the number of plates in the SushiRow with the current inputted
+                // value of the EditText
+                else {
+
+                    // Set the number of plates to the value of the input
+                    thisRow.setNumPlates(Integer.parseInt(plateString));
+                }
+
+                // Replace the SushiRow in the HashMap with the updated one
+                rowInfo.put(rowId, thisRow);
+                // Display the new row total for this row
+                displayRowTotal(rowId);
+            }
+        });
+
+        // Creating the onClick method for the minus button
+        minusButton.setOnClickListener(new View.OnClickListener() {
+
+            // When the minus button is clicked, we want to decrease the corresponding number of
+            // plates by one, or stop at 0 if we are already there.
+            public void onClick(View v) {
+
+                // Grab the Id of the row we are working with
+                int rowId = ((View) v.getParent()).getId();
+                // Get the SushiRow for this row
+                SushiRow thisRow = rowInfo.get(rowId);
+                // Get the number of plates in the row currently
+                int numPlates = thisRow.getNumPlates();
+
+                // Check if the number of plates is greater than 0
+                if (numPlates > 0) {
+
+                    // Decrease the to value of plates by 1
+                    numPlates--;
+                    // Update the SushiRow
+                    thisRow.setNumPlates(numPlates);
+
+                }
+                // If the value is somehow negative we set it to 0
+                else if (numPlates < 0) {
+
+                    // Set the number of plates in the SushiRow to 0
+                    thisRow.setNumPlates(0);
+
+                }
+                // If it is 0 we do nothing, so no else statement is required
+
+                // Put the updated SushiRow in the table
+                rowInfo.put(rowId, thisRow);
+                // Update the plates EditText for this row, and the related row total
+                displayNumPlates(rowId);
+            }
+        });
+
+        // Creating the onClick method for the plus button
+        plusButton.setOnClickListener(new View.OnClickListener() {
+
+            // When the plus button is pressed, increase the corresponding num of plates by 1
+            @Override
+            public void onClick(View v) {
+
+                // Grab the id of the row we are working with
+                int rowId = ((View) v.getParent()).getId();
+                // Get the SushiRow for this row
+                SushiRow thisRow = rowInfo.get(rowId);
+                // Get the current number of plates in the row
+                int numPlates = thisRow.getNumPlates();
+                // Increase the number of plates
+                numPlates++;
+                // Set the new number of plates in the SushiRow
+                thisRow.setNumPlates(numPlates);
+                // Put the updated row into the HashMap
+                rowInfo.put(rowId, thisRow);
+                // Update the plates EditText for this row, and the related row total
+                displayNumPlates(rowId);
+            }
+        });
 
         // Lastly, increase the numbers of rows by one
         numRows++;
