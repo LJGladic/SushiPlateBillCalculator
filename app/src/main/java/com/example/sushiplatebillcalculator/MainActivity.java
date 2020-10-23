@@ -2,7 +2,6 @@ package com.example.sushiplatebillcalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -11,6 +10,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     int maxDefaultRows = 5; // The max number of rows to create on a default start
     double totalBill = 0.00; // The total value of the bill, starts at $0.00
 
+    // String that stores the decimal separator of the phone
+    String dS;
+
     // HashMap containing all of our data about each sushi row.
     HashMap<Integer, SushiRow> rowInfo = new HashMap<>(10);
 
@@ -41,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
     final static int priceOffset = 200; // Offset between row id and price view
     final static int numPlatesOffset = 300; // Offset between row id and plate view
     final static int rowTotalOffset = 400; // Offset between row id and row total view
-
-    // String that stores the decimal separator of the phone
-    String dS;
-
 
     // Allows doubles to be displayed to exactly two decimal points
     public static DecimalFormat money = new DecimalFormat("0.00");
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Takes the row number and to new value to be displayed.  Finds the correct EditText and
-    // Updates the value of its' text
+    // updates the value of its' text
     public void displayNumPlates(int rowId) {
 
         // Get the SushiRow for this row
@@ -120,13 +119,41 @@ public class MainActivity extends AppCompatActivity {
         // Find the EditText we are looking for using the rowId
         EditText et = findViewById(rowId + numPlatesOffset);
         // Set the text of the EditText to the new value
-        et.setText(Integer.toString(thisRow.getNumPlates()));
+        et.setText(String.format(Locale.getDefault(), "%d", +thisRow.getNumPlates()));
         // Update the row total since we updated the number of plates
         displayRowTotal(rowId);
     }
 
-    // Method called that adds a new row to the app.  Anytime a row is constructed, this method is
-    // called, whether at app creation, adding a row button is pushed, or when loading from a preset.asd
+    // Then onClick method for the remove row button.  Makes sure we don't remove the last row.
+    // Disables the remove row button when we get down to 1 row
+    public void removeRowButton(View v) {
+
+        // If we have the max number of rows to start, re-enable the add row button
+        if (numRows == maxTotalRows) {findViewById(R.id.addRow).setEnabled(true);}
+
+        // If we have more than one row, delete the lowest row
+        if (numRows > 1) {
+
+            // Decrease numRows by 1
+            numRows--;
+            // Get the LinearLayout for the last row
+            LinearLayout row = findViewById(numRows);
+            // Delete the row by getting its' parent and removing it
+            ((ViewManager) row.getParent()).removeView(row);
+            // Also delete the entry in the HashMap for this row
+            rowInfo.remove(numRows);
+            // Calculate and display the new total since a row was removed
+            calcAndDisplayTotal();
+
+            // If deleting this row gets us down to one row, disable this button
+            if (numRows == 1) {v.setEnabled(false);}
+        }
+    }
+
+    // Method called that adds a new row to the app.  Builds the LinearLayout that holds the row,
+    // all of its' widgets, and the logic for the buttons, and listeners.  Anytime a row is
+    // constructed, this method is called, whether at app creation, the adding a row button is
+    // pushed, or when loading from a preset.
     public void addRow() {
 
         // Populate the HashMap with a new SushiRow for this new row
@@ -135,6 +162,9 @@ public class MainActivity extends AppCompatActivity {
         // Accessing the Linear Layout where all of the rows are added
         LinearLayout rowContainer = findViewById(R.id.plateRowVerticalLayout);
 
+        // Layout params for the LinearLayout that holds the row
+        LayoutParams rowParams = new LinearLayout.LayoutParams(
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         // Layout params for all the Views being added
         LayoutParams params = new LinearLayout.LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -144,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         // Set the ID of the LinearLayout to the current row number
         layout.setId(numRows);
         // Setting the layout params of the LinearLayout
-        layout.setLayoutParams(params);
+        layout.setLayoutParams(rowParams);
         // Setting the orientation of the LinearLayout
         layout.setOrientation(LinearLayout.HORIZONTAL);
         // Setting padding, only at the start and end, of the LinearLayout
@@ -254,11 +284,13 @@ public class MainActivity extends AppCompatActivity {
                 minButtonHeight, getResources().getDisplayMetrics()));
         minusButton.setMinimumHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 minButtonHeight, getResources().getDisplayMetrics()));
+        // Set the button to not be focusable to avoid unwanted soft keyboard popups
+        minusButton.setFocusable(false);
         // Add the button to the LinearLayout of the row
         layout.addView(minusButton);
 
         // Create the EditText that will hold the number of plates of the row
-        final EditText plateEdit = new EditText(this);
+        EditText plateEdit = new EditText(this);
         // Set the id of the plate EditText so it can be found later
         plateEdit.setId(numRows + numPlatesOffset);
         // Set the Layout Parameters of the EditText
@@ -294,6 +326,8 @@ public class MainActivity extends AppCompatActivity {
                 minButtonHeight, getResources().getDisplayMetrics()));
         plusButton.setMinimumHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 minButtonHeight, getResources().getDisplayMetrics()));
+        // Set the button to not be focusable to avoid unwanted soft keyboard popups
+        plusButton.setFocusable(false);
         // Add the button to the LinearLayout of the row
         layout.addView(plusButton);
 
@@ -392,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
                 // Get the text from the EditText
                 String plateString = getEditText().getText().toString();
 
-                // If the entered text is empty, treat it as a 0, ans set the appropriate value
+                // If the entered text is empty, treat it as a 0, and set the appropriate value
                 // in the SushiRow for this row
                 if (plateString.isEmpty()) {
 
@@ -446,7 +480,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // If it is 0 we do nothing, so no else statement is required
 
-                // Put the updated SushiRow in the table
+                // Put the updated SushiRow in the HashMap
                 rowInfo.put(rowId, thisRow);
                 // Update the plates EditText for this row, and the related row total
                 displayNumPlates(rowId);
@@ -479,5 +513,25 @@ public class MainActivity extends AppCompatActivity {
 
         // Lastly, increase the numbers of rows by one
         numRows++;
+    }
+
+    // The onClick method for the add row button.  Makes sure that we are under the max number
+    // of rows.  Disables the add row button when the max number of rows is reached.
+    public void addRowButton(View v) {
+
+        // If we have one row to start, re-enable the remove row button
+        if (numRows == 1) {findViewById(R.id.removeRow).setEnabled(true);}
+
+        // If we are under the max number of rows, add a new row
+        if (numRows < maxTotalRows) {
+            // add the new row
+            addRow();
+
+            // If adding the new row reaches the max number of rows, disable the add row button
+            if (numRows == maxTotalRows) {
+                // Disable the button
+                v.setEnabled(false);
+            }
+        }
     }
 }

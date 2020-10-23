@@ -9,6 +9,8 @@
     <string name="multiply">x</string>
     <string name="num_plates_start">0</string>
     <string name="equals">=</string>
+    <string name="add_row">Add Row</string>
+    <string name="remove_row">Remove Row</string>
     <string-array name="color_spinner">
         <item>Select Color</item>
         <item>Black</item>
